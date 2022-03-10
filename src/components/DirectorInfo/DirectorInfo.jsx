@@ -33,7 +33,7 @@ const DirectorInfo = () => {
           </Link>
         </p>
         {directors.map((director) => (
-          <Link to={`/directors/${director.id}`}>
+          <Link to={`/directors/${director.id}`} key={director.id} >
             <div className="director-container">
               <img
                 src={director.image}

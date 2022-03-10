@@ -6,9 +6,6 @@ import Layout from '../../components/Layout/Layout'
 import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
 
-// import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
-
 const SignIn = ({ msgAlert, setUser }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

@@ -1,11 +1,10 @@
+import './ChangePassword.css'
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
+import Layout from '../Layout/Layout'
 
 import { changePassword } from '../../api/auth'
 import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAlert/messages'
-
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
 const ChangePassword = ({ msgAlert, user }) => {
   const [oldPassword, setOldPassword] = useState('')
@@ -39,37 +38,35 @@ const ChangePassword = ({ msgAlert, user }) => {
   }
 
   return (
-    <div className='row'>
-      <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <h3>Change Password</h3>
-        <Form onSubmit={onChangePassword}>
-          <Form.Group controlId='oldPassword'>
-            <Form.Label>Old password</Form.Label>
-            <Form.Control
-              required
-              name='oldPassword'
-              value={oldPassword}
-              type='password'
-              placeholder='Old Password'
-              onChange={event => setOldPassword(event.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId='newPassword'>
-            <Form.Label>New Password</Form.Label>
-            <Form.Control
-              required
-              name='newPassword'
-              value={newPassword}
-              type='password'
-              placeholder='New Password'
-              onChange={event => setNewPassword(event.target.value)
-              }
-            />
-          </Form.Group>
-          <Button className='mt-2' variant='primary' type='submit'>Submit</Button>
-        </Form>
+
+    <Layout>
+      <div className="form-container">
+        <h1>ChangePassword</h1>
+        <form className="change-password-form" onSubmit={onChangePassword}>
+          <label className="change-password-label">Old Password</label>
+          <input
+            required
+            name='oldPassword'
+            value={oldPassword}
+            type='password'
+            placeholder='Old Password'
+            onChange={event => setOldPassword(event.target.value)}
+          />
+          <label className="change-password-label">New Password</label>
+          <input
+            required
+            name='newPassword'
+            value={newPassword}
+            type='password'
+            placeholder='New Password'
+            onChange={event => setNewPassword(event.target.value)}
+          />
+          <button className="change-password-btn" type="submit">
+            Submit
+          </button>
+        </form>
       </div>
-    </div>
+    </Layout>
   )
 }
 
