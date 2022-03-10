@@ -9,6 +9,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import DirectorCreate from './screens/DirectorCreate/DirectorCreate'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -35,6 +36,7 @@ const App = () => {
       ))}
       <main className='container'>
         <Routes>
+
           <Route
             path='/sign-up'
             element={<SignUp msgAlert={msgAlert} setUser={setUser} /> }
@@ -50,6 +52,10 @@ const App = () => {
           <Route
             path='/change-password'
             element={<ChangePassword msgAlert={msgAlert} user={user} /> }
+          />
+          <Route
+            path='/directors/create'
+            element={<DirectorCreate user={user} />}
           />
 
         </Routes>
