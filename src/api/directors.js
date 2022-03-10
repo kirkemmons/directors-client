@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const indexDirector = (user) => {
+export const indexDirectors = (user) => {
   return axios.get(apiUrl + '/directors/', {
     headers: {
       Authorization: `Token ${user.token}`
