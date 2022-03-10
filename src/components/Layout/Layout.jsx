@@ -1,11 +1,10 @@
-import './Layout.css'
 import React from 'react'
-import Nav from '../Nav/Nav'
+import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
 const Layout = (props) => (
   <div className="layout">
-    <Nav user={props.user} />
+    <Header user={props.user} />
     <div className="layout-children">{props.children}</div>
     <Footer />
   </div>

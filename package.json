@@ -1,6 +1,6 @@
 {
-  "homepage": "https://kirkemmons.github.io/directors-client",
-  "name": "directors-client",
+  "homepage": "https://kirkemmons.github.io/directors_client",
+  "name": "directors_client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

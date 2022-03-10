@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap");
+
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: black;
+  height: 50px;
+}
+
+.signature {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  color: white;
+}

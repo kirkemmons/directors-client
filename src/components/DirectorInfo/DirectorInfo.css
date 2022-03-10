@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Gilda+Display&family=Sacramento&display=swap");
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px !important;
+  margin: 0px;
+  font-size: 48px;
+}
+
+.director-card {
+  border-style: 2px solid;
+  font-family: "Gilda Display", serif;
+  color: black;
+}
+
+.director-card-img {
+  width: 350px;
+  height: 250px;
+}
+
+.all-director-title {
+  margin: 0px auto;
+  border-bottom: 2px solid #ffa818;
+  width: 25%;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.all-director-sentence {
+  font-family: "Gilda Display", serif;
+  font-size: 18px;
+  padding-bottom: 30px;
+}
+
+.director-container {
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 3px;
+  margin: 0 10px 15px 10px;
+}
+
+.director-container:hover {
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.9);
+}

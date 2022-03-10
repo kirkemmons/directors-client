@@ -1,11 +1,13 @@
+import './SignIn.css'
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
+import Layout from '../../components/Layout/Layout'
 
 import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+// import Form from 'react-bootstrap/Form'
+// import Button from 'react-bootstrap/Button'
 
 const SignIn = ({ msgAlert, setUser }) => {
   const [email, setEmail] = useState('')
@@ -41,37 +43,35 @@ const SignIn = ({ msgAlert, setUser }) => {
   }
 
   return (
-    <div className='row'>
-      <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <h3>Sign In</h3>
-        <Form onSubmit={onSignIn}>
-          <Form.Group controlId='email'>
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              required
-              type='email'
-              name='email'
-              value={email}
-              placeholder='Enter email'
-              onChange={event => setEmail(event.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId='password'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              required
-              name='password'
-              value={password}
-              type='password'
-              placeholder='Password'
-              onChange={event => setPassword(event.target.value)
-              }
-            />
-          </Form.Group>
-          <Button className='mt-2' variant='primary' type='submit'>Submit</Button>
-        </Form>
+
+    <Layout>
+      <div className="form-container">
+        <h1>Login to your Account</h1>
+        <form className="sign-in-form" onSubmit={onSignIn}>
+          <label className="sign-in-label">Email Address</label>
+          <input
+            required
+            type="email"
+            name="email"
+            value={email}
+            placeholder="Enter Email"
+            onChange={event => setEmail(event.target.value)}
+          />
+          <label className="sign-in-label">Password</label>
+          <input
+            required
+            name="password"
+            value={password}
+            type="password"
+            placeholder="Password"
+            onChange={event => setPassword(event.target.value)}
+          />
+          <button className="sign-in-btn" type="submit">
+            Login
+          </button>
+        </form>
       </div>
-    </div>
+    </Layout>
   )
 }
 

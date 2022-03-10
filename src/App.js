@@ -1,4 +1,5 @@
 /* eslint-disable no-tabs */
+import './App.css'
 import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
@@ -34,7 +35,7 @@ const App = () => {
           id={msgAlert.id}
         />
       ))}
-      <main className='container'>
+      <main className='body'>
         <Routes>
 
           <Route
