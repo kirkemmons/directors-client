@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
-import { React, useState, useEffect } from 'react'
 import './DirectorDetail.css'
+import { React, useState, useEffect } from 'react'
 import Layout from '../../components/Layout/Layout'
 import { Link, useParams } from 'react-router-dom'
 import { showDirector, deleteDirector } from '../../api/directors'
