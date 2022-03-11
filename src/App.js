@@ -10,7 +10,12 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import Directors from './screens/Directors/Directors'
+import DirectorDetail from './screens/DirectorDetail/DirectorDetail'
+import DirectorEdit from './screens/DirectorEdit/DirectorEdit'
 import DirectorCreate from './screens/DirectorCreate/DirectorCreate'
+import FilmCreate from './screens/FilmCreate/FilmCreate'
+import FilmEdit from './screens/FilmEdit/FilmEdit'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -55,8 +60,28 @@ const App = () => {
             element={<ChangePassword msgAlert={msgAlert} user={user} /> }
           />
           <Route
+            path='/directors/'
+            element={<Directors msgAlert={msgAlert} user={user} />}
+          />
+          <Route
+            path='/directors/:id'
+            element={<DirectorDetail msgAlert={msgAlert} user={user}/>}
+          />
+          <Route
+            path='/directors/:id/edit'
+            element={<DirectorEdit msgAlert={msgAlert} user={user} />}
+          />
+          <Route
             path='/directors/create'
-            element={<DirectorCreate user={user} />}
+            element={<DirectorCreate msgAlert={msgAlert} user={user} />}
+          />
+          <Route
+            path='/films/create'
+            element={<FilmCreate msgAlert={msgAlert} user={user} />}
+          />
+          <Route
+            path='/films/:id/edit'
+            element={<FilmEdit msgAlert={msgAlert} user={user} />}
           />
 
         </Routes>

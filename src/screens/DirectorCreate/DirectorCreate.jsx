@@ -25,7 +25,9 @@ function DirectorCreate (props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await createDirector(directorcreate)
+
+    await createDirector(props.user, directorcreate)
+
     navigate('/directors/')
   }
 
@@ -82,7 +84,7 @@ function DirectorCreate (props) {
             />
           </div>
           <button className="submit" type="submit">
-                        Submit
+              Submit
           </button>
         </form>
       </div>

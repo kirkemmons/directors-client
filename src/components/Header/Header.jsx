@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom'
 
 const authenticatedOptions = (
   <>
+    <NavLink to='/directors' className='link'>Directors</NavLink>
+    <NavLink to='/directors/create' className='link'>Add a Director</NavLink>
     <NavLink to='/change-password' className='link'>Change Password</NavLink>
     <NavLink to='/sign-out' className='link'>Sign Out</NavLink>
   </>
@@ -18,7 +20,7 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <>
-    <NavLink to='/directors' className='link'>Directors</NavLink>
+    {/* <NavLink to='/directors' className='link'>Directors</NavLink> */}
   </>
 )
 
@@ -37,7 +39,7 @@ const Header = ({ user }) => {
         </NavLink>
         <div className="links">
           {user && (
-            <div className="link-welcome">Welcome, {user.username}!</div>
+            <div className="link-welcome">Welcome, {user.email}!</div>
           )}
           {alwaysOptions}
           {user ? authenticatedOptions : unauthenticatedOptions}
