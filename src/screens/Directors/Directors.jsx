@@ -8,7 +8,7 @@ export default function Directors (props) {
     <div>
       <Layout user={props.user}>
         <div className="all-directors">
-          <DirectorInfo />
+          <DirectorInfo user={props.user}/>
         </div>
       </Layout>
     </div>

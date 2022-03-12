@@ -9,7 +9,7 @@ export const indexDirectors = (user) => {
   })
 }
 
-export const showDirector = (user, id) => {
+export const showDirector = (id, user) => {
   return axios.get(apiUrl + `/directors/${id}/`, {
     headers: {
       Authorization: `Token ${user.token}`

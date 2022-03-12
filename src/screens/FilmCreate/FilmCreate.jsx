@@ -1,11 +1,11 @@
 import './FilmCreate.css'
 import { React, useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { createFilm } from '../../api/films'
 import { indexDirectors } from '../../api/directors'
 import Layout from '../../components/Layout/Layout'
 
-function FilmCreate (props) {
+function FilmCreate ({ user }) {
   const navigate = useNavigate()
   const [directors, setDirectors] = useState([])
   const [filmcreate, setFilmCreate] = useState({
@@ -16,12 +16,16 @@ function FilmCreate (props) {
     director: ''
   })
 
+  if (!user) {
+    return <Navigate to='/' />
+  }
+
   useEffect(() => {
-    const fetchDirectors = async () => {
-      const allDirectors = await indexDirectors()
-      setDirectors(allDirectors)
+    const fetchDirectors = async (user) => {
+      const allDirectors = await indexDirectors(user)
+      setDirectors(allDirectors.data.directors)
     }
-    fetchDirectors()
+    fetchDirectors(user)
   }, [])
 
   const handleChange = (event) => {
@@ -34,14 +38,16 @@ function FilmCreate (props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await createFilm(filmcreate)
+
+    await createFilm(user, filmcreate)
+
     navigate('/directors/')
   }
 
   const { title, release, description, image } = filmcreate
 
   return (
-    <Layout user={props.user}>
+    <Layout user={user}>
       <div className="film-create">
         <h1 className="film-create-title">Add Film</h1>
       </div>
@@ -101,7 +107,7 @@ function FilmCreate (props) {
                 <option value="0" selected>
                     Director Name
                 </option>
-                {directors.map((name) => {
+                {directors && directors.map((name) => {
                   return (
                     <option
                       key={name.id}

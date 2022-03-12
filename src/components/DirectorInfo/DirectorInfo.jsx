@@ -1,19 +1,23 @@
 import './DirectorInfo.css'
 import { React, useState, useEffect } from 'react'
 import { indexDirectors } from '../../api/directors'
-import { Link } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 
-const DirectorInfo = () => {
+const DirectorInfo = ({ user }) => {
   const [directors, setDirectors] = useState([])
   const [isLoaded, setLoaded] = useState(false)
 
+  if (!user) {
+    return <Navigate to='/' />
+  }
+
   useEffect(() => {
-    const fetchDirectors = async () => {
-      const allDirectors = await indexDirectors()
-      setDirectors(allDirectors)
+    const fetchDirectors = async (user) => {
+      const allDirectors = await indexDirectors(user)
+      setDirectors(allDirectors.data.directors)
       setLoaded(true)
     }
-    fetchDirectors()
+    fetchDirectors(user)
   }, [])
 
   if (!isLoaded) {
@@ -26,13 +30,13 @@ const DirectorInfo = () => {
         <p className="all-director-title">Director List</p>
         <p className="all-director-sentence">
           {' '}
-                    Want to add a Director?
+              Want to add a Director?
           <Link to="/directors/create" style={{ textDecoration: 'underline' }}>
             {' '}
-                        Click Here!
+              Click Here!
           </Link>
         </p>
-        {directors.map((director) => (
+        {directors && directors.map((director) => (
           <Link to={`/directors/${director.id}`} key={director.id} >
             <div className="director-container">
               <img

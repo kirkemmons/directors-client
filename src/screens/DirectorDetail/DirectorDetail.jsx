@@ -2,23 +2,27 @@
 import './DirectorDetail.css'
 import { React, useState, useEffect } from 'react'
 import Layout from '../../components/Layout/Layout'
-import { Link, useParams } from 'react-router-dom'
+import { Navigate, Link, useParams } from 'react-router-dom'
 import { showDirector, deleteDirector } from '../../api/directors'
 import { deleteFilm } from '../../api/films'
 
-function DirectorDetail (props) {
+function DirectorDetail ({ user }) {
   const [director, setDirector] = useState(null)
   const [isLoaded, setLoaded] = useState(false)
   const { id } = useParams()
 
+  if (!user) {
+    return <Navigate to='/' />
+  }
+
   useEffect(() => {
-    const fetchDirector = async () => {
-      const director = await showDirector(id)
-      setDirector(director)
+    const fetchDirector = async (user) => {
+      const director = await showDirector(id, user)
+      setDirector(director.data.director)
       setLoaded(true)
     }
 
-    fetchDirector()
+    fetchDirector(user)
   }, [id])
 
   if (!isLoaded) {
@@ -26,7 +30,7 @@ function DirectorDetail (props) {
   }
 
   return (
-    <Layout user={props.user}>
+    <Layout user={user}>
       <div>
         <div className="director-detail">
           <img
@@ -72,7 +76,7 @@ function DirectorDetail (props) {
         </div>
 
         <div className="film-card">
-          {director.films.map((films) => (
+          {director && director.films.map((films) => (
             <div className="card">
               <div className="image">
                 <img src={films.image} alt={films.title} />

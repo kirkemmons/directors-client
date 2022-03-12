@@ -16,6 +16,7 @@ import DirectorEdit from './screens/DirectorEdit/DirectorEdit'
 import DirectorCreate from './screens/DirectorCreate/DirectorCreate'
 import FilmCreate from './screens/FilmCreate/FilmCreate'
 import FilmEdit from './screens/FilmEdit/FilmEdit'
+// import Home from './screens/Home/Home'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -42,6 +43,9 @@ const App = () => {
       ))}
       <main className='body'>
         <Routes>
+
+          {/* <Route path='/'
+            element={<Home />} /> */}
 
           <Route
             path='/sign-up'
