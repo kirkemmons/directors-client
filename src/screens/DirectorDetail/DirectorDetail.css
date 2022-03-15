@@ -71,7 +71,7 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .film-section-title {
@@ -88,6 +88,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding-top: 10px;
 }
 
 .film-section-add-sentence {

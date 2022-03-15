@@ -12,10 +12,12 @@
   border-style: 2px solid;
   font-family: "Gilda Display", serif;
   color: black;
+  padding-top: 10px;
+  font-size: 23px;
 }
 
 .director-card-img {
-  width: 350px;
+  width: 200px;
   height: 250px;
 }
 
@@ -31,6 +33,7 @@
   font-family: "Gilda Display", serif;
   font-size: 18px;
   padding-bottom: 30px;
+  padding-top: 0px;
 }
 
 .director-container {
@@ -39,6 +42,8 @@
   border: 2px solid black;
   border-radius: 3px;
   margin: 0 10px 15px 10px;
+  width: 250px;
+  background-color: #d3d5d4;
 }
 
 .director-container:hover {

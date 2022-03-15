@@ -8,6 +8,8 @@
   display: flex;
   justify-content: center;
   font-family: "Gilda Display", serif;
+  /* font-weight: bold; */
+  font-size: 36px;
   margin: 0px auto;
   border-bottom: 2px solid #ffa818;
   width: 25%;

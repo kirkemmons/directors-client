@@ -77,7 +77,12 @@ input {
 }
 
 .sign-up-btn {
-  font-size: 16px !important;
+  display: flex;
+  justify-content: center;
   font-family: "Gilda Display", serif;
-  height: 30px;
+  background-color: #ffa818;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 390px;
 }

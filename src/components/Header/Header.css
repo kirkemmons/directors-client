@@ -27,7 +27,7 @@
   letter-spacing: 6px;
   flex: 1;
   max-width: 30vw;
-  padding-right: 650px;
+  padding-right: 850px;
 }
 
 .links {
@@ -36,6 +36,7 @@
   max-width: 60vw;
   align-items: center;
   font-size: 18px;
+  color: white;
 }
 
 .link {
