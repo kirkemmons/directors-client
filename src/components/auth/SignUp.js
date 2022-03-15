@@ -45,7 +45,7 @@ const SignUp = ({ msgAlert, setUser }) => {
 
     <Layout>
       <div className='form-container'>
-        <h1>Need an Account? Sign Up</h1>
+        <h1>Sign Up Form</h1>
         <form className='sign-up-form' onSubmit={onSignUp}>
           <label className='sign-up-label'>Email Address</label>
           <input
@@ -75,7 +75,7 @@ const SignUp = ({ msgAlert, setUser }) => {
             onChange={event => setPasswordConfirmation(event.target.value)}
           />
           <button className='sign-up-btn' type='submit'>
-            Sign Up
+          Sign Up
           </button>
         </form>
       </div>

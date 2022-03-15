@@ -39,7 +39,7 @@ const ChangePassword = ({ msgAlert, user }) => {
 
   return (
 
-    <Layout>
+    <Layout user={user}>
       <div className="form-container">
         <h1>ChangePassword</h1>
         <form className="change-password-form" onSubmit={onChangePassword}>
