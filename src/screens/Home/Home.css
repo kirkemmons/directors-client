@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Gilda+Display&family=Sacramento&display=swap");
+
+.title {
+  font-family: "Sacramento", cursive;
+  font-size: 88px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  letter-spacing: 3.5px;
+  padding-top: 60px;
+}
+
+.home-sentence {
+  font-family: "Gilda Display", serif;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 5px solid #d3d5d4;
+  width: 80%;
+  margin: 0px auto;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.steven-spielberg-home {
+  padding-right: 20px;
+  padding-bottom: 75px;
+}
+
+.quentin-tarantino-home {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.christopher-nolan-home {
+  padding-left: 20px;
+  padding-bottom: 75px;
+}
