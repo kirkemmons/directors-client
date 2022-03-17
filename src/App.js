@@ -64,7 +64,7 @@ const App = () => {
             element={<ChangePassword msgAlert={msgAlert} user={user} /> }
           />
           <Route
-            path='/directors/'
+            path='/directors'
             element={<Directors msgAlert={msgAlert} user={user} />}
           />
           <Route

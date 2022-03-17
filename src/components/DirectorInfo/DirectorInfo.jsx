@@ -3,7 +3,7 @@ import { React, useState, useEffect } from 'react'
 import { indexDirectors } from '../../api/directors'
 import { Navigate, Link } from 'react-router-dom'
 
-const DirectorInfo = ({ user }) => {
+const DirectorInfo = ({ user, msgAlert }) => {
   const [directors, setDirectors] = useState([])
   const [isLoaded, setLoaded] = useState(false)
 
@@ -13,10 +13,19 @@ const DirectorInfo = ({ user }) => {
 
   useEffect(() => {
     const fetchDirectors = async (user) => {
-      const allDirectors = await indexDirectors(user)
-      setDirectors(allDirectors.data.directors)
-      setLoaded(true)
+      try {
+        const allDirectors = await indexDirectors(user)
+        setDirectors(allDirectors.data.directors)
+        setLoaded(true)
+      } catch (error) {
+        msgAlert({
+          heading: 'Directors List failed to load, try creating one first',
+          message: error.message,
+          variant: 'danger'
+        })
+      }
     }
+
     fetchDirectors(user)
   }, [])
 
