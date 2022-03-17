@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { showDirector, updateDirector } from '../../api/directors'
 import Layout from '../../components/Layout/Layout'
 
-function DirectorEdit (props) {
+function DirectorEdit ({ user, msgAlert }) {
   const navigate = useNavigate()
 
   const [directoredit, setDirectorEdit] = useState({
@@ -17,11 +17,11 @@ function DirectorEdit (props) {
   const { id } = useParams()
 
   useEffect(() => {
-    const fetchDirector = async () => {
-      const directoredit = await showDirector(id)
-      setDirectorEdit(directoredit)
+    const fetchDirector = async (user) => {
+      const directoredit = await showDirector(user, id)
+      setDirectorEdit(directoredit.data.director)
     }
-    fetchDirector()
+    fetchDirector(user)
   }, [id])
 
   const handleChange = (event) => {
@@ -34,12 +34,28 @@ function DirectorEdit (props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await updateDirector(id, directoredit)
+
+    try {
+      await updateDirector(user, id, directoredit)
+
+      msgAlert({
+        heading: 'Director Updated',
+        message: 'Updated director successfully',
+        variant: 'success'
+      })
+    } catch (error) {
+      msgAlert({
+        heading: 'Failed to update director',
+        message: error.message,
+        variant: 'danger'
+      })
+    }
+
     navigate(`/directors/${id}/`)
   }
 
   return (
-    <Layout user={props.user}>
+    <Layout user={user}>
       <div className="director-edit">
         <h1 className="director-edit-title">Edit Director</h1>
       </div>

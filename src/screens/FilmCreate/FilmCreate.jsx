@@ -5,7 +5,7 @@ import { createFilm } from '../../api/films'
 import { indexDirectors } from '../../api/directors'
 import Layout from '../../components/Layout/Layout'
 
-function FilmCreate ({ user }) {
+function FilmCreate ({ user, msgAlert }) {
   const navigate = useNavigate()
   const [directors, setDirectors] = useState([])
   const [filmcreate, setFilmCreate] = useState({
@@ -39,7 +39,21 @@ function FilmCreate ({ user }) {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    await createFilm(user, filmcreate)
+    try {
+      await createFilm(user, filmcreate)
+
+      msgAlert({
+        heading: 'Film Created',
+        message: `Created ${title} successfully.`,
+        variant: 'success'
+      })
+    } catch (error) {
+      msgAlert({
+        heading: 'Failed to create film',
+        message: error.message,
+        variant: 'danger'
+      })
+    }
 
     navigate('/directors/')
   }

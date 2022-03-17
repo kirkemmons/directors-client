@@ -5,7 +5,7 @@ import { showFilm, updateFilm } from '../../api/films'
 import { indexDirectors } from '../../api/directors'
 import Layout from '../../components/Layout/Layout'
 
-function FilmEdit (props) {
+function FilmEdit ({ user, msgAlert }) {
   const navigate = useNavigate()
   const [directors, setDirectors] = useState([])
   const [filmedit, setFilmEdit] = useState({
@@ -19,19 +19,19 @@ function FilmEdit (props) {
   const { id } = useParams()
 
   useEffect(() => {
-    const fetchDirectors = async () => {
-      const allDirectors = await indexDirectors()
-      setDirectors(allDirectors)
+    const fetchDirectors = async (user) => {
+      const allDirectors = await indexDirectors(user)
+      setDirectors(allDirectors.data.directors)
     }
-    fetchDirectors()
-  }, [])
+    fetchDirectors(user)
+  }, [id])
 
   useEffect(() => {
-    const fetchFilm = async () => {
-      const filmedit = await showFilm(id)
+    const fetchFilm = async (user) => {
+      const filmedit = await showFilm(user, id)
       setFilmEdit(filmedit)
     }
-    fetchFilm()
+    fetchFilm(user)
   }, [id])
 
   const handleChange = (event) => {
@@ -44,12 +44,28 @@ function FilmEdit (props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await updateFilm(id, filmedit)
-    navigate('/directors/')
+
+    try {
+      await updateFilm(user, id, filmedit)
+
+      msgAlert({
+        heading: 'Film Updated',
+        message: 'Updated film successfully',
+        variant: 'success'
+      })
+    } catch (error) {
+      msgAlert({
+        heading: 'Failed to update film',
+        message: error.message,
+        variant: 'danger'
+      })
+    }
+
+    navigate(`/directors/${id}`)
   }
 
   return (
-    <Layout user={props.user}>
+    <Layout user={user}>
       <div className="film-edit">
         <h1 className="film-edit-title">Edit Film</h1>
       </div>
@@ -108,7 +124,7 @@ function FilmEdit (props) {
                 options={directors.name}
               >
                 <option value="0" selected>
-                    Director Name
+                  Director Name
                 </option>
                 {directors.map((name) => {
                   return (

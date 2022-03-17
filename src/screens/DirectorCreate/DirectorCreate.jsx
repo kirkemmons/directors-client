@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { createDirector } from '../../api/directors'
 import Layout from '../../components/Layout/Layout'
 
-function DirectorCreate (props) {
+function DirectorCreate ({ user, msgAlert }) {
   const navigate = useNavigate()
 
   const [directorcreate, setDirectorCreate] = useState({
@@ -26,7 +26,21 @@ function DirectorCreate (props) {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    await createDirector(props.user, directorcreate)
+    try {
+      await createDirector(user, directorcreate)
+
+      msgAlert({
+        heading: 'Director Created',
+        message: `Created ${name} successfully.`,
+        variant: 'success'
+      })
+    } catch (error) {
+      msgAlert({
+        heading: 'Failed to create director',
+        message: error.message,
+        variant: 'danger'
+      })
+    }
 
     navigate('/directors/')
   }
@@ -34,7 +48,7 @@ function DirectorCreate (props) {
   const { name, roles, biography, image } = directorcreate
 
   return (
-    <Layout user={props.user}>
+    <Layout user={user}>
       <div className="director-edit">
         <h1 className="director-edit-title">Add Director</h1>
       </div>
